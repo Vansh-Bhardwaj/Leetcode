@@ -5,38 +5,26 @@ using namespace std;
 class Solution {
 public:
     static bool detectCapitalUse(string word) {
-        
-        // Iterate through the word starting from the second character 
+
         for (int i = 1; i < word.length(); i++) {
-
-            // Check if the first letter is uppercase
-            if (word[0] >= 'A' && word[0] <= 'Z') { 
-
-                // Check if the second letter is lowercase
-                if (word[1] >= 'a' && word[1] <= 'z') { 
-
-                    // If any subsequent letter is uppercase, return false
-                    if (word[i] >= 'A' && word[i] <= 'Z') { 
-                        return false;
+            if (isupper(word[0])) { // First letter is uppercase
+                if (islower(word[1])) { // Second letter is lowercase
+                    if (isupper(word[i])) { 
+                        return false; // Any subsequent letter is uppercase
                     }
-                } 
-                else { 
-                    // If the second letter is uppercase and any subsequent letter is lowercase, return false
-                    if (word[i] >= 'a' && word[i] <= 'z') { 
-                        return false;
+                } else { // Second letter is uppercase
+                    if (islower(word[i])) { 
+                        return false; // Any subsequent letter is lowercase
                     }
                 }
-            } 
-            else { 
-                // If the first letter is lowercase and any subsequent letter is uppercase, return false
-                if (word[i] >= 'A' && word[i] <= 'Z') { 
-                    return false;
+            } else { // First letter is lowercase
+                if (isupper(word[i])) { 
+                    return false; // Any subsequent letter is uppercase
                 }
             }
         }
 
-        // If all checks pass, the word has correct capitalization
-        return true; 
+        return true;
     }
 };
 
