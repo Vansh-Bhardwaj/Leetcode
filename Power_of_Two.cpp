@@ -4,7 +4,7 @@ using namespace std;
 
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
+   static bool isPowerOfTwo(int n) {
 
 
         while (n != 0) {
